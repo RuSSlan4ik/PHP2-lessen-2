@@ -6,11 +6,11 @@
 </head>
 <body>
 <h1>Новости</h1>
-<div><a href="../lesson1/form.php"><button>Добавить новость</button></a></div>
+<div><a href="../form.php"><button>Добавить новость</button></a></div>
 <?php foreach ($news as $article) : ?>
   <article>
     <h3>
-      <a href="../lesson1/article.php?id=<?php echo $article['id']; ?>">
+      <a href="../article.php?id=<?php echo $article['id']; ?>">
         <?php echo $article['title']; ?>
       </a>
     </h3>
