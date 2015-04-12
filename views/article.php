@@ -14,6 +14,6 @@
   <div><?php echo $article['text_news']; ?></div>
 </article>
 <br/>
-<div><a href="../lesson1/">Назад</a></div>
+<div><a href="../">Назад</a></div>
 </body>
 </html>
