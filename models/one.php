@@ -1,15 +1,13 @@
 <?php
-require __DIR__ . '/db.php';
+require_once __DIR__ . '/../classes/Data.inc';
+require_once __DIR__ . '/../classes/Article.inc';
+require_once __DIR__ . '/../classes/News.inc';
 
-function addNews($author, $title, $text, $date)
-{
-  dbConnect();
-  $date = date('Y-m-d');
-  $author = mysql_real_escape_string($author);
-  $title = mysql_real_escape_string($title);
-  $text = mysql_real_escape_string($text);
-  $query = "INSERT INTO news (author, title, text, date) VALUES ('$author', '$title', '$text', '$date')";
-  return mysql_query($query);
-}
+$anews = new News();
+$tablename = $anews->setTableName();
+$id = $_GET['id'];
+$sql = $anews->getOneRecord($tablename,$id);
+$namedb = 'NewsDb';
 
-include '/dataform.php';
+$db = new DataB(DataB::DATABASE_HOST, DataB::DATABASE_USER, DataB::DATABASE_PSW, $namedb);
+$news = $db->getData($sql);
