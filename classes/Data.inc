@@ -12,8 +12,8 @@ class DataB
   }
   protected  function connect($dbhost, $dbname, $dbuser, $dbpassword)
   {
-    mysql_connect($dbhost, $dbuser, $dbpassword);
-    mysql_select_db($dbname);
+    mysql_connect($dbhost, $dbuser, $dbpassword)or die(mysql_error());
+    mysql_select_db($dbname)or die(mysql_error());
   }
   protected  function addRecord($sql)
   {
