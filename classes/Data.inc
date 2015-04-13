@@ -16,6 +16,14 @@ class DataB
     mysql_select_db($dbname)or die(mysql_error());
   }
 
+  public function changeData($sql)
+  {
+    $this->sql = $sql;
+    $res = mysql_query($sql);
+
+    return $res;
+  }
+
   protected  function dbFindAllByQuery($sql)
   {
     $res = mysql_query($sql);
