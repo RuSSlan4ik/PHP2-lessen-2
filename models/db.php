@@ -1,24 +1,11 @@
 <?php
-function dbConnect()
-{
-  mysql_connect('localhost', 'root', '')or die("MySQL недоступен! ".mysql_error());
-  mysql_select_db('Lessen')or die("Нет соединения с базой! ".mysql_error());
-  mysql_query("SET NAMES utf8");
-}
+require_once __DIR__ . '/../classes/Data.inc';
+require_once __DIR__ . '/../classes/Article.inc';
+require_once __DIR__ . '/../classes/News.inc';
 
-function dbFindAllByQuery($sql)
-{
-  dbConnect();
-  $res = mysql_query($sql);
-  $ret = [];
-  while(false !== ($row = mysql_fetch_array($res)))
-  {
-    $ret[] = $row;
-  }
-  return $ret;
-}
-
-function dbFindOneByQuery($sql)
-{
-  return dbFindAllByQuery($sql)[0];
-}
+$anews = new News();
+$tablename = $anews->setTableName();
+$sql = $anews->getAllData($tablename);
+$namedb = 'NewsDb';
+$db = new DataB(DataB::DATABASE_HOST, DataB::DATABASE_USER, DataB::DATABASE_PSW, $namedb);
+$news = $db->getData($sql);
