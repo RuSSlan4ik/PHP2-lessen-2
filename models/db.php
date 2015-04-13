@@ -1,5 +1,4 @@
 <?php
-
 function dbConnect()
 {
   mysql_connect('localhost', 'root', '')or die("MySQL недоступен! ".mysql_error());
