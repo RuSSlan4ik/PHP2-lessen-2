@@ -11,7 +11,7 @@ abstract class Article
   {
     $this->createArticle($title, $text, $author, $date);
   }
-  protected function createArticle($title, $text, $author, $date)
+  public function createArticle($title, $text, $author, $date)
   {
     $this->title = $title;
     $this->text = $text;
