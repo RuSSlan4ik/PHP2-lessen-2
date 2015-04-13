@@ -4,7 +4,7 @@ require __DIR__ . '/db.php';
 function addNews($author, $title, $text, $date)
 {
   dbConnect();
-  $date = date("Y-m-d");
+  $date = date('Y-m-d');
   $author = mysql_real_escape_string($author);
   $title = mysql_real_escape_string($title);
   $text = mysql_real_escape_string($text);
