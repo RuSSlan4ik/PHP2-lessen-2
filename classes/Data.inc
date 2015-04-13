@@ -1,38 +1,30 @@
 <?php
 class DataB
 {
-  const DATABASE_HOST = 'localhost';
-  const DATABASE_USER = 'root';
-  const DATABASE_PSW = '';
-
-  protected $conn;
-  public $news;
-  public $sqlquery;
-
-
-  public function __construct($host, $user, $pass, $base)
+  public function __construct($dbhost, $dbname, $dbuser, $dbpassword)
   {
-    $this->conn = mysql_connect($host, $user, $pass) or die(mysql_error());
-    $this->conn = mysql_select_db($base, $this->conn);
-
+    $this->connect($dbhost, $dbname, $dbuser, $dbpassword);
   }
-// функция работы с запросами к БД (добавление, изменение, удаление)
-  public function changeData($sqlquery)
+  protected  function connect($dbhost, $dbname, $dbuser, $dbpassword)
   {
-    $this->sqlquery = $sqlquery;
-    $res = mysql_query($sqlquery);
-
-    return $res;
+    mysql_connect($dbhost, $dbuser, $dbpassword);
+    mysql_select_db($dbname);
   }
-// функция чтения данных в массив
-  public function getData($sqlquery)
+  protected  function addRecord($sql)
   {
-    $this->sqlquery = $sqlquery;
-    $this->conn = mysql_query($sqlquery);
-
-    while (false !== ($row = mysql_fetch_array($this->conn))) {
-      $arr[] = $row;
+    return mysql_query($sql);
+  }
+  protected  function getRecords($sql)
+  {
+    $res = mysql_query($sql);
+    $ret = [];
+    while (false !== ($row = mysql_fetch_array($res))) {
+      $ret[] = $row;
     }
-    return $arr;
+    return $ret;
+  }
+  protected  function getRecord($sql)
+  {
+    $this->getRecords($sql)[0];
   }
 }
