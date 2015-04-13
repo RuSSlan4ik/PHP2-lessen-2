@@ -1,52 +1,32 @@
 <?php
-abstract class ArticleDb
+abstract class Article
 {
-  // VARIABLES
-  public $id;
   public $title;
   public $text;
-  public $author;
   public $date;
+  public $author;
+  public $id;
 
-
-  // FUNCTIONS
-  public function __construct($title = null, $text = null, $author = null, $date = null)
+  public function __construct($title = '', $text = '', $author = '', $date = false)
+  {
+    $this->createArticle($title, $text, $author, $date);
+  }
+  protected function createArticle($title, $text, $author, $date)
   {
     $this->title = $title;
     $this->text = $text;
-    $this->author = $author;
     $this->date = $date;
-
+    $this->author = $author;
   }
-
-  abstract public function setTableName();
-
-  public function addRecord($tablename)//,$title,$text,$author,$date)
+  public function getArticle()
   {
-    return $sqlquery = "INSERT INTO '" . $tablename . "'('title', 'text', 'author','date') VALUES ('" .
-      $this->title . "','" . $this->text . "','" . $this->author . "','" . $this->date . "')";
+    return ['title' => $this->title,
+            'text' => $this->text,
+            'author' => $this->author,
+            'date' => $this->date,
+    ];
   }
-
-  public function getAllData($tablename)
-  {
-    return $sqlquery = "SELECT * FROM '" . $tablename . "' ORDER BY 'date' DESC";
+  public function searchArticle($search) {
+    return false;
   }
-
-  public function getOneRecord($tablename, $id)
-  {
-    return $sqlquery = "SELECT * FROM '" . $tablename . "' WHERE 'id'=" . $id;
-  }
-
-  public function deleteRecord($tablename, $id)
-  {
-    return $sqlquery = "DELETE * FROM '" . $tablename . "' WHERE 'id'=" . $id;
-  }
-
-  public function changeRecord($tablename, $id, $newtitle, $newtext, $newauthor)
-  {
-    $newdate = date('Y-m-d');
-    return $sqlquery = "UPDATE '" . $tablename . "' SET 'title' = '" . $newtitle . "','text' = '" . $newtext . "',
-                               'author' = '" . $newauthor . "','date'= '" . $newdate . "' WHERE 'id' = " . $id;
-  }
-
 }
