@@ -2,15 +2,15 @@
 class DataB
 {
   public $dbhost;
-  public $dbname;
   public $dbuser;
   public $dbpassword;
+  public $dbname;
 
-  public function __construct($dbhost, $dbname, $dbuser, $dbpassword)
+  public function __construct($dbhost, $dbuser, $dbpassword, $dbname)
   {
-    $this->connect($dbhost, $dbname, $dbuser, $dbpassword);
+    $this->connect($dbhost, $dbuser, $dbpassword, $dbname);
   }
-  protected  function connect($dbhost, $dbname, $dbuser, $dbpassword)
+  public  function connect($dbhost, $dbuser, $dbpassword, $dbname)
   {
     mysql_connect($dbhost, $dbuser, $dbpassword)or die(mysql_error());
     mysql_select_db($dbname)or die(mysql_error());
@@ -24,7 +24,7 @@ class DataB
     return $res;
   }
 
-  protected  function dbFindAllByQuery($sql)
+  public  function getData($sql)
   {
     $res = mysql_query($sql);
     $ret = [];
@@ -33,8 +33,8 @@ class DataB
     }
     return $ret;
   }
-  protected  function dbFindOneByQuery($sql)
+  public  function dbFindOneByQuery($sql)
   {
-    $this->dbFindAllByQuery($sql)[0];
+    $this->getData($sql)[0];
   }
 }
