@@ -15,11 +15,8 @@ class DataB
     mysql_connect($dbhost, $dbuser, $dbpassword)or die(mysql_error());
     mysql_select_db($dbname)or die(mysql_error());
   }
-  protected  function addRecord($sql)
-  {
-    return mysql_query($sql);
-  }
-  protected  function getRecords($sql)
+
+  protected  function dbFindAllByQuery($sql)
   {
     $res = mysql_query($sql);
     $ret = [];
@@ -28,8 +25,8 @@ class DataB
     }
     return $ret;
   }
-  protected  function getRecord($sql)
+  protected  function dbFindOneByQuery($sql)
   {
-    $this->getRecords($sql)[0];
+    $this->dbFindAllByQuery($sql)[0];
   }
 }
