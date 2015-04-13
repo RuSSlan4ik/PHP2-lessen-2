@@ -1,6 +1,11 @@
 <?php
 class DataB
 {
+  public $dbhost;
+  public $dbname;
+  public $dbuser;
+  public $dbpassword;
+
   public function __construct($dbhost, $dbname, $dbuser, $dbpassword)
   {
     $this->connect($dbhost, $dbname, $dbuser, $dbpassword);
