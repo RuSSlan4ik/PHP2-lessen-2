@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/db.php';
+
 function addNews($author_name, $title, $text_news, $dat)
 {
   dbConnect();
@@ -10,4 +11,5 @@ function addNews($author_name, $title, $text_news, $dat)
   $query = "INSERT INTO news (author_name, title, text_news, data) VALUES ('$author_name', '$title', '$text_news', '$dat')";
   return mysql_query($query);
 }
+
 include '/dataform.php';
