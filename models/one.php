@@ -7,7 +7,6 @@ $anews = new News();
 $tablename = $anews->setTableName();
 $id = $_GET['id'];
 $sql = $anews->getOneRecord($tablename,$id);
-$namedb = 'Lesson';
 
-$db = new DataB(DataB::DATABASE_HOST, DataB::DATABASE_USER, DataB::DATABASE_PSW, $namedb);
+$db = new DataB('localhost', 'root', '', 'Lesson');
 $news = $db->getData($sql);
