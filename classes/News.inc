@@ -14,13 +14,11 @@ class News extends Article
   public function getAllData($tablename)
   {
     return $sql = "SELECT * FROM '" . $tablename . "' ORDER BY 'date' DESC";
-    $ret = dbFindAllByQuery($sql);
   }
 
   public function getOneRecord($tablename, $id)
   {
     return $sql = "SELECT * FROM '" . $tablename . "' WHERE 'id'=" . $id;
-    $ret = dbFindOneByQuery($sql);
   }
 
   public function deleteRecord($tablename, $id)
