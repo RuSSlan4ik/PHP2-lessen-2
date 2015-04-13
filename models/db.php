@@ -1,10 +1,12 @@
 <?php
+
 function dbConnect()
 {
   mysql_connect('localhost', 'root', '')or die("MySQL недоступен! ".mysql_error());
   mysql_select_db('Lessen')or die("Нет соединения с базой! ".mysql_error());
   mysql_query("SET NAMES utf8");
 }
+
 function dbFindAllByQuery($sql)
 {
   dbConnect();
@@ -15,6 +17,7 @@ function dbFindAllByQuery($sql)
   }
   return $ret;
 }
+
 function dbFindOneByQuery($sql)
 {
   return dbFindAllByQuery($sql)[0];
