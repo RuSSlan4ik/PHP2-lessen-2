@@ -18,15 +18,4 @@ abstract class Article
     $this->date = $date;
     $this->author = $author;
   }
-  public function getArticle()
-  {
-    return ['title' => $this->title,
-            'text' => $this->text,
-            'author' => $this->author,
-            'date' => $this->date,
-    ];
-  }
-  public function searchArticle($search) {
-    return false;
-  }
 }
