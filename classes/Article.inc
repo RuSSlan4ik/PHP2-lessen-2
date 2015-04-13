@@ -18,4 +18,5 @@ abstract class Article
     $this->date = $date;
     $this->author = $author;
   }
+  abstract public function setTableName();
 }
