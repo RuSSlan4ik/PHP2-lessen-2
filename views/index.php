@@ -14,7 +14,7 @@
         <?php echo $article['title']; ?>
       </a>
     </h3>
-    <div><?php echo $article['text_news']; ?></div>
+    <div><?php echo $article['text']; ?></div>
   </article>
 <?php endforeach; ?>
 </body>
