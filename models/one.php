@@ -1,14 +1,14 @@
 <?php
 require __DIR__ . '/db.php';
 
-function addNews($author_name, $title, $text_news, $dat)
+function addNews($author, $title, $text, $date)
 {
   dbConnect();
-  $dat = date("Y-m-d");
-  $author_name = mysql_real_escape_string($author_name);
+  $date = date("Y-m-d");
+  $author = mysql_real_escape_string($author);
   $title = mysql_real_escape_string($title);
-  $text_news = mysql_real_escape_string($text_news);
-  $query = "INSERT INTO news (author_name, title, text_news, data) VALUES ('$author_name', '$title', '$text_news', '$dat')";
+  $text = mysql_real_escape_string($text);
+  $query = "INSERT INTO news (author, title, text, date) VALUES ('$author', '$title', '$text', '$date')";
   return mysql_query($query);
 }
 
