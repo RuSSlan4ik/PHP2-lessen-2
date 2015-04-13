@@ -9,9 +9,9 @@
 <article>
   <h3>
     <?php echo $article['title']; ?>
-  </h3><p><?php echo $article['data']; ?>  Автор новости:<?php echo $article['author_name']; ?></p>
+  </h3><p><?php echo $article['date']; ?>  Автор новости:<?php echo $article['author']; ?></p>
 
-  <div><?php echo $article['text_news']; ?></div>
+  <div><?php echo $article['text']; ?></div>
 </article>
 <br/>
 <div><a href="../">Назад</a></div>
