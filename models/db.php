@@ -11,7 +11,8 @@ function dbFindAllByQuery($sql)
   dbConnect();
   $res = mysql_query($sql);
   $ret = [];
-  while(($row = mysql_fetch_array($res)) !== false) {
+  while(false !== ($row = mysql_fetch_array($res)))
+  {
     $ret[] = $row;
   }
   return $ret;
