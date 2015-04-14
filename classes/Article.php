@@ -14,7 +14,7 @@ abstract class Article
 
   public function getAllData()
   {
-    return $this->db->getAllData('SELECT * FROM' . $this->getTable() . 'ORDER BY 'date' DESC');
+    return $this->db->getAllData('SELECT * FROM' . $this->getTable());
   }
 
   public function getOneData($id)
