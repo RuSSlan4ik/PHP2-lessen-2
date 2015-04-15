@@ -20,6 +20,7 @@ class Db
     }
     return $ret;
   }
+
   public  function findOne($sql)
   {
     return $this->findAll($sql)[0];
