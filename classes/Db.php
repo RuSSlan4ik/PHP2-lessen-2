@@ -1,8 +1,6 @@
 <?php
-class DataB
+class Db
 {
-
-
   public function __construct()
   {
     $config = include __DIR__.'/../config/db.php';
@@ -10,18 +8,20 @@ class DataB
     mysql_select_db($config['dbname'])or die(mysql_error());
   }
 
-
-  public  function dbFindAllByQuery($sql)
+  public function findAll($sql)
   {
     $res = mysql_query($sql);
+    if (false === $res){
+      return false;
+    }
     $ret = [];
-    while (false !== ($row = mysql_fetch_object($res))) {
+    while ($row = mysql_fetch_object($res)) {
       $ret[] = $row;
     }
     return $ret;
   }
-  public  function dbFindOneTableByQuery($sql)
+  public  function findOne($sql)
   {
-    $this->dbFindAllByQuery($sql)[0];
+    return $this->findAll($sql)[0];
   }
 }
