@@ -5,6 +5,7 @@ require __DIR__ . '/../models/NewsArticle.php';
 class NewsController
       extends AbstractController
 {
+
   protected function getTemplatePath()
   {
     return __DIR__ . '/../views/news/';
@@ -17,4 +18,11 @@ class NewsController
     $this->render('all', ['items' => $items]);
   }
 
+  public function actionOne()
+
+  {
+    $newModel = new NewsArticle();
+    $items = $newModel->findOne($id);
+    $this->render('article',['items' => $items]);
+  }
 } 
