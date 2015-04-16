@@ -14,7 +14,7 @@ class AdminController
   public function actionform()
   {
     $newsModel = new NewsArticle();
-    $items = $newsModel->addNews($_GET['id']);
+    $items = $newsModel->addNews($_POST['author_name'], $_POST['text_news'], $_POST['title'], $_POST['date']);
     $this->render('form', ['items' => $items]);
 
   }
