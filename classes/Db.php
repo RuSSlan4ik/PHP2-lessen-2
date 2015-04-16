@@ -25,4 +25,9 @@ class Db
   {
     return $this->findAll($sql)[0];
   }
+
+  public function addNews($query)
+  {
+    return mysql_query($query);
+  }
 }
