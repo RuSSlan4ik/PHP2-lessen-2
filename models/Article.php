@@ -22,4 +22,9 @@ abstract class Article
   {
     return $this->db->findOne('SELECT * FROM ' . $this->getTable() . ' WHERE id=' . $id);
   }
+
+  public function addNews()
+  {
+    return $this->db->addNews('INSERT INTO ' . $this->getTable() . ' VALUES' );
+  }
 }
