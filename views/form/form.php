@@ -7,7 +7,7 @@
 <body>
 <h1>Форма добавления новости</h1>
 
-<form action="../form.php" method="post">
+<form action="" method="post">
   <p><input type="text" name="author" placeholder="Ваше имя" size="25"/></p>
 
   <p><input type="text" name="title" placeholder="Заголовок новости" size="25"/></p>
@@ -16,6 +16,6 @@
 
   <p><button role="button" type="submit">Отправить</button></p>
 </form>
-<a href="../">Назад</a>
+<a href="../../">Назад</a>
 </body>
 </html>
