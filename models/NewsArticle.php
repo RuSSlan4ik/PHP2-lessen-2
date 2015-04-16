@@ -5,6 +5,6 @@ class NewsArticle extends Article
 {
 
   protected function getTable() {
-    return 'news';
+   return 'news';
   }
 }
