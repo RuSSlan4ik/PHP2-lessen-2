@@ -6,6 +6,8 @@ abstract class Article
 
   protected $db;
 
+
+
   abstract protected function getTable();
 
   public function __construct()
@@ -23,8 +25,10 @@ abstract class Article
     return $this->db->findOne('SELECT * FROM ' . $this->getTable() . ' WHERE id=' . $id);
   }
 
-  public function addNews()
+  public function addNews($author_name, $title, $text_news, $date)
   {
-    return $this->db->addNews('INSERT INTO ' . $this->getTable() . ' VALUES' );
+    $query = $this->db->addNews("INSERT INTO '" . $this->getTable() . "'(title, text_news, author_name, date) VALUES ('" .
+      $this->title . "','" . $this->text_news . "','" . $this->author_name . "','" . $this->date . "')");
+    return mysql_query($query);
   }
 }

@@ -1,15 +1,33 @@
 <?php
 
 class View
+  implements Countable
 {
-  public $items;
-  public function getTemplatePath()
+  protected $path;
+  protected $data = [];
+  public function __construct($path)
   {
-    return __DIR__.'/../view/';
+    $this->path = $path;
   }
-  public  function render($template, $data)
+  public function __set($k, $v)
   {
-    extract($data);
-    require $this->getTemplatePath().'/'.$template.'.php';
+    $this->data[$k] = $v;
+  }
+  public function __get($k)
+  {
+    return $this->data[$k];
+  }
+  public function count()
+  {
+    return count($this->data);
+  }
+  public function render($template)
+  {
+    foreach ($this->data as $k => $v) {
+      $$k = $v;
+    }
+
+    include($this->path . '/' . $template . '.php');
+
   }
 }
