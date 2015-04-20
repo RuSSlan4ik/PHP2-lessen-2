@@ -27,8 +27,8 @@ abstract class Article
 
   public function addNews($author_name, $title, $text_news, $date)
   {
-    $query = $this->db->addNews("INSERT INTO '" . $this->getTable() . "'(title, text_news, author_name, date) VALUES ('" .
-      $this->title . "','" . $this->text_news . "','" . $this->author_name . "','" . $this->date . "')");
+    $date = date("Y-m-d");
+    $query = 'INSERT INTO ' . $this->getTable() .  " (author_name, title, text_news, date) VALUES  ($author_name, $text_news, $title, $date)";
     return mysql_query($query);
   }
 }
