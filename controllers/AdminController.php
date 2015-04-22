@@ -13,10 +13,8 @@ class AdminController
     $this->view = new View(__DIR__ . '/../views/form/');
   }
 
-  public function actionAll()
+  public function actionForm()
   {
-    $newsModel = new NewsArticle();
-    $this->view->items = $newsModel->findAll();
     $this->view->render('form');
   }
   public function actionAdd()

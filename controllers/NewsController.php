@@ -16,16 +16,14 @@ class NewsController
 
   public function actionAll()
   {
-    $newsModel = new NewsArticle();
-    $this->view->items = $newsModel->findAll();
+    $this->view->items = NewsArticle::findAll();
     $this->view->render('all');
   }
 
   public function actionOne()
 
   {
-    $newModel = new NewsArticle();
-    $this->view->items = $newModel->findOne($_GET['id']);
+    $this->view->items = NewsArticle::findOne($_GET['id']);
     $this->view->render('one');
   }
 } 

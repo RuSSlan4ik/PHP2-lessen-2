@@ -1,12 +1,13 @@
 <?php
-require __DIR__ . '/Article.php';
+require __DIR__ . '/../classes/Model.php';
 
 class NewsArticle
-  extends Article
-
+  extends Model
 {
-  protected function getTable() {
-    return 'news';
-  }
-
+  protected static $table = 'news';
+  public $id;
+  public $author_name;
+  public $title;
+  public $text_news;
+  public $date;
 }
