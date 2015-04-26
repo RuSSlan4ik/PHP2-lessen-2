@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . '/../classes/Db.php';
+require __DIR__ . '/../classes/E404Exception.php';
 
 abstract class Model
 {
@@ -25,7 +26,12 @@ abstract class Model
     $class = static::class;
     $sql = 'SELECT * FROM ' . static::getTable() . ' WHERE id=:id';
     $db = new Db();
-    return $db->findOne($class, $sql, [':id' => $id]);
+    $res = $db->findOne($class, $sql, [':id' => $id]);
+    if ($res) {
+      return $res;
+    } else {
+      throw new E404Exception('Oops!');
+    }
   }
 
   public function insert()

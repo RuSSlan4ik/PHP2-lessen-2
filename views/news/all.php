@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Новости</h1>
-<div><a href="?ctrl=admin&action=form""><button>Добавить новость</button></a></div>
+<div><a href="?ctrl=admin&action=form"><button>Добавить новость</button></a></div>
 <?php foreach ($items as $item) : ?>
   <article>
     <h3>
