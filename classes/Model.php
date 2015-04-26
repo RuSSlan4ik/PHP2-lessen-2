@@ -5,17 +5,21 @@ require __DIR__ . '/../classes/Db.php';
 abstract class Model
 {
   protected static $table;
+  public $id;
+
   public static function getTable()
   {
     return static::$table;
   }
+
   public static function findAll()
   {
     $class = static::class;
-    $sql = 'SELECT * FROM ' . static::getTable() . ' ORDER BY date=:date DESC';
+    $sql = 'SELECT * FROM ' . static::getTable() . ' ORDER BY date DESC';
     $db = new Db();
-    return $db->findAll($class, $sql, [':date' => $date]);
+    return $db->findAll($class, $sql);
   }
+
   public static function findOne($id)
   {
     $class = static::class;
@@ -24,11 +28,26 @@ abstract class Model
     return $db->findOne($class, $sql, [':id' => $id]);
   }
 
-
-  public function addNews($author_name, $title, $text_news, $date)
+  public function insert()
   {
-    $date = date("Y-m-d");
-    $query = 'INSERT INTO ' . $this->getTable() .  " (author_name, title, text_news, date) VALUES  ($author_name, $text_news, $title, $date)";
-    return mysql_query($query);
+    $properties = get_object_vars($this);
+    unset($properties['id']);
+    $columns = array_keys($properties);
+
+    $places = [];
+    $data = [];
+    foreach ($columns as $property)
+    {
+      $places[] = ':' . $property;
+      $data[':' . $property] = $this->$property;
+    }
+    $sql = 'INSERT INTO ' . static::getTable() . '
+    (' . implode(', ', $columns) . ')
+    VALUES
+    (' . implode(', ', $places) . ')
+    ';
+    $db = new Db();
+    $db->execute($sql, $data);
+    $this->id = $db->getId();
   }
 }

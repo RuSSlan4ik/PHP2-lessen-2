@@ -21,9 +21,8 @@ class AdminController
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $newsModel = new NewsArticle();
-      $this->view->items = $newsModel->addNews($_POST['author_name'], $_POST['text_news'], $_POST['title'], $_POST['date']);
+      $this->view->items = $newsModel->insert($_POST['author'], $_POST['text'], $_POST['title'], $_POST['date']);
     }
     $this->view->render('form');
   }
-
 }
