@@ -19,9 +19,14 @@ class AdminController
   }
   public function actionAdd()
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $newsModel = new NewsArticle();
-      $this->view->items = $newsModel->insert($_POST['author'], $_POST['text'], $_POST['title'], $_POST['date']);
+
+    if (!empty($_POST)&& $_POST['title'] != '' && $_POST['text'] != '') {
+      $news = new NewsArticle();
+      $news->title = $_POST['title'];
+      $news->text = $_POST['text'];
+      $news->author = $_POST['author'];
+      $news->date = date("Y-m-d");
+      $news->insert();
     }
     $this->view->render('form');
   }

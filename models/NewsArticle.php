@@ -4,7 +4,7 @@ require __DIR__ . '/../classes/Model.php';
 class NewsArticle
   extends Model
 {
-  protected static $table = 'news';
+    protected static $table = 'news';
 
     public $author;
     public $title;
