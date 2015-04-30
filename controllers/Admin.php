@@ -1,6 +1,6 @@
 <?php
-
-class AdminController
+namespace app\controllers;
+class Admin
     extends AbstractController
 {
     protected $view;
@@ -19,7 +19,7 @@ class AdminController
     {
         if (!empty($_POST)&& $_POST['title'] != '' && $_POST['text'] != '')
         {
-            $news = new NewsArticle();
+            $news = new \app\models\News();
             $news->title = $_POST['title'];
             $news->text = $_POST['text'];
             $news->author = $_POST['author'];

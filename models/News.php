@@ -1,7 +1,8 @@
 <?php
+namespace app\models;
+class News
 
-class NewsArticle
-    extends Model
+    extends \Model
 {
     protected static $table = 'news';
 
